@@ -4,6 +4,7 @@
   "description": "lowdb sample for 1.125",
   "main": "server.js",
   "scripts": {
+    "start": "npm run build && node server.js",
     "test": "jest"
   },
   "author": "abel@mit.edu",
