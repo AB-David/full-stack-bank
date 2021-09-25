@@ -2,7 +2,7 @@
   "name": "littledb",
   "version": "1.0.0",
   "description": "lowdb sample for 1.125",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest"
   },
