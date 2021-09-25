@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
-const url         = 'mongodb://localhost:27017';
+var password = process.env.MONGO_PASSWORD;
+const url         = 'mongodb+srv://admin:'+password+'@cluster0.sts2b.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 let db            = null;
  
 // connect to mongo
