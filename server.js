@@ -92,7 +92,7 @@ app.get('/account/all', function (req, res) {
 
     dal.all().
         then((docs) => {
-            console.log(docs);
+            console.log('writing documents to log:' + docs);
             res.send(docs);
     });
 });
