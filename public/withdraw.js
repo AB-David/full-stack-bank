@@ -1,4 +1,6 @@
 function Withdraw(){
+  const atmObject = React.useContext(UserContext);
+  const {currentUser} = atmObject
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');  
 
@@ -8,7 +10,7 @@ function Withdraw(){
       header="Withdraw"
       status={status}
       body={show ? 
-        <WithdrawForm setShow={setShow} setStatus={setStatus}/> :
+        <WithdrawForm setShow={setShow} setStatus={setStatus} currentUser={currentUser}/> :
         <WithdrawMsg setShow={setShow} setStatus={setStatus}/>}
     />
   )
@@ -29,11 +31,10 @@ function WithdrawMsg(props){
 }
 
 function WithdrawForm(props){
-  const [email, setEmail]   = React.useState('');
   const [amount, setAmount] = React.useState('');
 
   function handle(){
-    fetch(`/account/update/${email}/-${amount}`)
+    fetch(`/account/update/${props.currentUser}/-${amount}`)
     .then(response => response.text())
     .then(text => {
         try {
@@ -42,7 +43,7 @@ function WithdrawForm(props){
             props.setShow(false);
             console.log('JSON:', data);
         } catch(err) {
-            props.setStatus('Deposit failed')
+            props.setStatus('Withdraw failed')
             console.log('err:', text);
         }
     });
@@ -50,13 +51,10 @@ function WithdrawForm(props){
 
 
   return(<>
-
-    Email<br/>
-    <input type="input" 
+    <input type="hidden" 
       className="form-control" 
-      placeholder="Enter email" 
-      value={email} 
-      onChange={e => setEmail(e.currentTarget.value)}/><br/>
+      value={props.currentUser} 
+/>
 
     Amount<br/>
     <input type="number" 
