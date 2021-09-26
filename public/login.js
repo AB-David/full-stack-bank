@@ -1,6 +1,6 @@
 function Login(){
   const atmObject = React.useContext(UserContext);
-  const {isLoggedIn, setIsLoggedIn} = atmObject
+  var {isLoggedIn, setIsLoggedIn} = atmObject
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');    
 
@@ -10,7 +10,7 @@ function Login(){
       header="Login"
       status={status}
       body={show ? 
-        <LoginForm setShow={setShow} setStatus={setStatus}/> :
+        <LoginForm setShow={setShow} setStatus={setStatus} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} /> :
         <LoginMsg setShow={setShow} setStatus={setStatus}/>}
     />
   ) 
@@ -39,10 +39,10 @@ function LoginForm(props){
             const data = JSON.parse(text);
             props.setStatus('');
             props.setShow(false);
-            console.log('JSON:', data);
-            console.log('isLoggedin:'+isLoggedIn)
-            setIsLoggedIn(true);
-            console.log('isLoggedin2:'+isLoggedIn)
+            console.log('JSON222:', data);
+            console.log('isLoggedin:'+ props.isLoggedIn)
+            props.setIsLoggedIn(true);
+            console.log('isLoggedin2:'+ props.isLoggedIn)
         } catch(err) {
             props.setStatus(text)
             console.log('err:', text);
