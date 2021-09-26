@@ -6,7 +6,7 @@ function Withdraw(){
 
   return (
     <Card
-      bgcolor="success"
+      bgcolor="secondary"
       header="Withdraw"
       status={status}
       body={show ? 
@@ -34,7 +34,7 @@ function WithdrawForm(props){
   const [amount, setAmount] = React.useState('');
 
   function handle(){
-    fetch(`/account/update/${props.currentUser}/-${amount}`)
+    fetch(`/account/update/${props.currentUser.email}/-${amount}`)
     .then(response => response.text())
     .then(text => {
         try {
@@ -53,7 +53,7 @@ function WithdrawForm(props){
   return(<>
     <input type="hidden" 
       className="form-control" 
-      value={props.currentUser} 
+      value={props.currentUser.email} 
 />
 
     Amount<br/>

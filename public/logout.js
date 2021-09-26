@@ -3,7 +3,7 @@ function Logout() {
     const {isLoggedIn, setIsLoggedIn, setCurrentUser} = atmObject
     function performLogout(){
         setIsLoggedIn(false);
-        setCurrentUser(null);
+        setCurrentUser({});
     }
     return (
         !isLoggedIn ? (  

@@ -22,7 +22,7 @@ function NavBar({isLoggedIn, currentUser}){
             <a className="nav-link" href="#/alldata/">AllData</a>
           </li> 
           <li className="nav-item">
-            <p className="nav-link"> {currentUser} </p>
+            <p className="nav-link"> {currentUser.email} </p>
           </li> 
           <li className="nav-item">
             <a className="nav-link" href="#/logout/">Logout</a>

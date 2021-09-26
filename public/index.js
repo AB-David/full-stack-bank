@@ -1,7 +1,7 @@
 const { useState } = React;
 function Spa() {
   var [isLoggedIn, setIsLoggedIn] = useState(false); 
-  var [currentUser, setCurrentUser] = useState(null);
+  var [currentUser, setCurrentUser] = useState({});
   return (
     <HashRouter>
       <div>

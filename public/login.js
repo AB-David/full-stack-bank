@@ -40,7 +40,7 @@ function LoginForm(props){
             props.setShow(false);
             console.log('JSON:', data);
             props.setIsLoggedIn(true);
-            props.setCurrentUser(data.email)
+            props.setCurrentUser(data)
         } catch(err) {
             props.setStatus(text)
             console.log('err:', text);
