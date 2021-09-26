@@ -1,6 +1,6 @@
 function Login(){
   const atmObject = React.useContext(UserContext);
-  var {isLoggedIn, setIsLoggedIn,currentUser, setCurrentUser} = atmObject
+  const {isLoggedIn, setIsLoggedIn,currentUser, setCurrentUser} = atmObject
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');    
 

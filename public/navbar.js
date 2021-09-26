@@ -9,7 +9,7 @@ function NavBar({isLoggedIn, currentUser}){
         <ul className="navbar-nav">
         {isLoggedIn ? (  
               <>
-                        <li className="nav-item">
+          <li className="nav-item">
             <a className="nav-link" href="#/deposit/">Deposit</a>
           </li>
           <li className="nav-item">
@@ -23,7 +23,10 @@ function NavBar({isLoggedIn, currentUser}){
           </li> 
           <li className="nav-item">
             <p className="nav-link"> {currentUser} </p>
-          </li>          
+          </li> 
+          <li className="nav-item">
+            <a className="nav-link" href="#/logout/">Logout</a>
+          </li>         
           </>
                 ):(
               <>
