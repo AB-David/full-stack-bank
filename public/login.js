@@ -1,6 +1,6 @@
 function Login(){
   const atmObject = React.useContext(UserContext);
-  var {isLoggedIn, setIsLoggedIn} = atmObject
+  var {isLoggedIn, setIsLoggedIn,currentUser, setCurrentUser} = atmObject
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');    
 
@@ -10,7 +10,7 @@ function Login(){
       header="Login"
       status={status}
       body={show ? 
-        <LoginForm setShow={setShow} setStatus={setStatus} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} /> :
+        <LoginForm setShow={setShow} setStatus={setStatus} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} setCurrentUser={setCurrentUser} currentUser={currentUser} /> :
         <LoginMsg setShow={setShow} setStatus={setStatus}/>}
     />
   ) 
@@ -30,8 +30,7 @@ function LoginMsg(props){
 function LoginForm(props){
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
-
-  function handle(){
+  const handle = ()=> {
     fetch(`/account/login/${email}/${password}`)
     .then(response => response.text())
     .then(text => {
@@ -39,10 +38,9 @@ function LoginForm(props){
             const data = JSON.parse(text);
             props.setStatus('');
             props.setShow(false);
-            console.log('JSON222:', data);
-            console.log('isLoggedin:'+ props.isLoggedIn)
+            console.log('JSON:', data);
             props.setIsLoggedIn(true);
-            console.log('isLoggedin2:'+ props.isLoggedIn)
+            props.setCurrentUser(data.email)
         } catch(err) {
             props.setStatus(text)
             console.log('err:', text);

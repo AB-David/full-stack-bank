@@ -1,14 +1,18 @@
 const { useState } = React;
 function Spa() {
   var [isLoggedIn, setIsLoggedIn] = useState(false); 
+  var [currentUser, setCurrentUser] = useState(null);
   return (
     <HashRouter>
       <div>
-        <NavBar/>        
+        <NavBar isLoggedIn={isLoggedIn} currentUser={currentUser}/>         
         <UserContext.Provider value={
           {users:[{name:'abel',email:'abel@mit.edu',password:'secret',balance:100}],
           isLoggedIn:isLoggedIn,
-          setIsLoggedIn:setIsLoggedIn}}>
+          currentUser:currentUser,
+          setIsLoggedIn:setIsLoggedIn,
+          setCurrentUser:setCurrentUser,
+          }}>
           <div className="container" style={{padding: "20px"}}>
             <Route path="/" exact component={Home} />
             <Route path="/CreateAccount/" component={CreateAccount} />

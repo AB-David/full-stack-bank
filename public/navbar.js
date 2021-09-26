@@ -1,4 +1,4 @@
-function NavBar({isLoggedIn}){
+function NavBar({isLoggedIn, currentUser}){
   return(
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="#">Fullstack Banking</a>
@@ -20,6 +20,9 @@ function NavBar({isLoggedIn}){
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#/alldata/">AllData</a>
+          </li> 
+          <li className="nav-item">
+            <p className="nav-link"> {currentUser} </p>
           </li>          
           </>
                 ):(

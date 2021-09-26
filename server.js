@@ -37,7 +37,6 @@ app.get('/account/login/:email/:password', function (req, res) {
 
     dal.find(req.params.email).
         then((user) => {
-
             // if user exists, check password
             if(user.length > 0){
                 if (user[0].password === req.params.password){
