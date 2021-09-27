@@ -4,7 +4,6 @@ function Deposit(){
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');  
 
-
   return (
     <Card
       bgcolor="secondary"
@@ -23,8 +22,8 @@ function DepositMsg(props){
     <button type="submit" 
       className="btn btn-light" 
       onClick={() => {
-          props.setShow(true);
-          props.setStatus('');
+        props.setShow(true);
+        props.setStatus('');
       }}>
         Deposit again
     </button>
@@ -52,8 +51,7 @@ function DepositForm(props){
   }
 
   return(<>
-    <p>Balance : {props.currentUser.balance}</p>
-    
+    <p>Balance : {props.currentUser.balance}</p>    
     <input type="hidden" 
       className="form-control" 
       value={props.currentUser.email} />
@@ -62,11 +60,11 @@ function DepositForm(props){
     <input type="number" 
       className="form-control" 
       placeholder="Enter amount" 
-      value={amount} onChange={e => setAmount(e.currentTarget.value)}/><br/>
+      value={amount} 
+      onChange={e => setAmount(e.currentTarget.value)}/><br/>
 
     <button type="submit" 
       className="btn btn-light" 
       onClick={handle}>Deposit</button>
-
   </>);
 }

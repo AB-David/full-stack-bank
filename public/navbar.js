@@ -22,11 +22,11 @@ function NavBar({isLoggedIn, currentUser}){
             <a className="nav-link" href="#/alldata/">AllData</a>
           </li> 
           <li className="nav-item">
-            <p className="nav-link"> {currentUser.email} </p>
+            <a className="nav-link" href="#/logout/">Logout</a>
           </li> 
           <li className="nav-item">
-            <a className="nav-link" href="#/logout/">Logout</a>
-          </li>         
+            <p className="nav-link"> {currentUser.email} </p>
+          </li> 
           </>
                 ):(
               <>

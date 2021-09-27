@@ -1,6 +1,6 @@
 function Withdraw(){
   const atmObject = React.useContext(UserContext);
-  const {currentUser} = atmObject
+  const {currentUser, setCurrentUser} = atmObject
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');  
 
@@ -10,7 +10,7 @@ function Withdraw(){
       header="Withdraw"
       status={status}
       body={show ? 
-        <WithdrawForm setShow={setShow} setStatus={setStatus} currentUser={currentUser}/> :
+        <WithdrawForm setShow={setShow} setStatus={setStatus} currentUser={currentUser} setCurrentUser={setCurrentUser}/> :
         <WithdrawMsg setShow={setShow} setStatus={setStatus}/>}
     />
   )
@@ -41,6 +41,7 @@ function WithdrawForm(props){
             const data = JSON.parse(text);
             props.setStatus(JSON.stringify(data.value));
             props.setShow(false);
+            props.setCurrentUser(data.value)
             console.log('JSON:', data);
         } catch(err) {
             props.setStatus('Withdraw failed')
@@ -49,8 +50,8 @@ function WithdrawForm(props){
     });
   }
 
-
   return(<>
+    <p>Balance : {props.currentUser.balance}</p>
     <input type="hidden" 
       className="form-control" 
       value={props.currentUser.email} 
@@ -65,9 +66,6 @@ function WithdrawForm(props){
 
     <button type="submit" 
       className="btn btn-light" 
-      onClick={handle}>
-        Withdraw
-    </button>
-
+      onClick={handle}>Withdraw</button>
   </>);
 }
