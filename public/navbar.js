@@ -16,9 +16,6 @@ function NavBar({isLoggedIn, currentUser}){
             <a className="nav-link" href="#/withdraw/">Withdraw</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#/balance/">Balance</a>
-          </li>
-          <li className="nav-item">
             <a className="nav-link" href="#/alldata/">AllData</a>
           </li> 
           <li className="nav-item">

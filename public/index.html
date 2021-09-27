@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>Template</title>
-    <!-- bootstrap css -->
-    
+    <!-- Google signin script -->
     <meta name="google-signin-client_id" content="116571876132-fjhg0f7gve73vd1t047pvjd36og14tvf.apps.googleusercontent.com">
+    <!-- bootstrap css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- don't use this in production: -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -14,7 +14,8 @@
   <body>
     <!-- we will put our react component inside this div -->
     <div id="root"></div>
-
+    <!-- Google Javascript library --> 
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <!-- load react -->
     <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
@@ -34,6 +35,6 @@
     <script src="alldata.js" defer type="text/babel"></script>
     <script src="home.js" defer type="text/babel"></script>
     <script src="index.js" defer type="text/babel"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
   </body>
 </html>

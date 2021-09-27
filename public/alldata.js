@@ -6,8 +6,10 @@ function AllData(){
         // fetch all accounts from API
         fetch('/account/all')
             .then(response => {
-                console.log(response.json());
-                return response.json();
+                var kaki = response.json();
+                console.log('kaki is' + kaki)
+                return kaki;
+                
             })
             .then(data => {
                 console.log(data);

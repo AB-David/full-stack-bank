@@ -39,7 +39,7 @@ function DepositForm(props){
     .then(text => {
         try {
             const data = JSON.parse(text);
-            props.setStatus(JSON.stringify(data.value));
+            //props.setStatus(JSON.stringify(data.value));
             props.setShow(false);
             props.setCurrentUser(data.value)
             console.log('JSON:', data);

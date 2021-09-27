@@ -21,7 +21,7 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
             }
             else{
                 // else create user
-                dal.create(req.params.name,req.params.email,req.params.password).
+                dal.create(req.params.name,req.params.email,req.params.password,false,'').
                     then((user) => {
                         console.log(user);
                         res.send(user);            
@@ -30,6 +30,30 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
         });
     console.log('starting request')
 });
+
+//Google user
+app.get('/account/createGoogle/:name/:email/:googleID', function (req, res) {
+    console.log('starting request')
+    // check if account exists
+    dal.find(req.params.email).
+        then((users) => {
+            // if user exists, return error message
+            if(users.length > 0){
+                console.log('User already exists');
+                res.send(users[0]);    
+            }
+            else{
+                // else create user
+                dal.create(req.params.name,req.params.email,'',true,req.params.googleID).
+                    then((user) => {
+                        console.log(user);
+                        res.send(user);            
+                    });            
+            }
+        });
+    console.log('starting request')
+});
+
 
 
 // login user 
@@ -52,6 +76,9 @@ app.get('/account/login/:email/:password', function (req, res) {
     });
     
 });
+
+
+
 
 // find user account
 app.get('/account/find/:email', function (req, res) {
