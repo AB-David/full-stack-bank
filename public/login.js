@@ -3,7 +3,10 @@ function Login(){
   const {isLoggedIn, setIsLoggedIn,currentUser, setCurrentUser} = atmObject
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');    
-
+  var e = document.createElement("script");
+  e.src = "https://apis.google.com/js/client:platform.js?onload=gPOnLoad";
+          var t = document.getElementsByTagName("script")[0];
+          t.parentNode.insertBefore(e, t)
   return (
     <Card
       bgcolor="secondary"
@@ -28,10 +31,8 @@ function LoginMsg(props){
 }
 
 function LoginForm(props){
-  const [email, setEmail]       = React.useState('');
-  const [password, setPassword] = React.useState('');
-  React.useEffect(()=>{
-    console.log('useEffect')
+//  React.useEffect(()=>{
+//    console.log('useEffect')
     window.onSignIn = (googleUser)=>{
         console.log('Google user is :' +googleUser)
         var profile = googleUser.getBasicProfile();
@@ -57,7 +58,9 @@ function LoginForm(props){
             }
         });
     }
-  })
+    const [email, setEmail]       = React.useState('');
+    const [password, setPassword] = React.useState('');
+  //})
   const handle = ()=> {
     fetch(`/account/login/${email}/${password}`)
     .then(response => response.text())
@@ -75,31 +78,26 @@ function LoginForm(props){
         }
     });
   }
-
-  return (<>
-
+  return (<>    
     Email<br/>
     <input type="input" 
       className="form-control" 
       placeholder="Enter email" 
       value={email} 
       onChange={e => setEmail(e.currentTarget.value)}/><br/>
-
     Password<br/>
     <input type="password" 
       className="form-control" 
       placeholder="Enter password" 
       value={password} 
       onChange={e => setPassword(e.currentTarget.value)}/><br/>
-
     <button type="submit" className="btn btn-light" onClick={handle}>Login</button>
     <br>
     </br>
     Or sign in with Google<br/>
-    <div className="g-signin2" data-onsuccess="onSignIn"></div>
-
-
-  </>);
+    <div className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+  </>);  
 }
+
 
 

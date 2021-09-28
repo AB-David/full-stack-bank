@@ -1,5 +1,6 @@
 body {
     background-color: #282c34;
+    background-image: linear-gradient(to right, rgb(46, 46, 46),rgb(136, 132, 136));
     min-height: 100vh;
-    color: white;
+    color:rgb(158, 178, 196)
 }
